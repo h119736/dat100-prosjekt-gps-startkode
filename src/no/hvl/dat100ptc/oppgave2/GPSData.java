@@ -9,40 +9,79 @@ public class GPSData {
 	protected int antall = 0;
 
 	public GPSData(int antall) {
+		int n = antall;
 
-		throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO
+		gpspoints = new GPSPoint[n];
+
+		antall = 0;
+
 	}
 
 	public GPSPoint[] getGPSPoints() {
 		return this.gpspoints;
 	}
-	
+
 	protected boolean insertGPS(GPSPoint gpspoint) {
 
 		boolean inserted = false;
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO 
-	
+
+		if (antall < gpspoints.length) {
+			gpspoints[antall] = gpspoint;
+			antall++;
+
+			inserted = true;
+			return inserted;
+		} else {
+			return inserted;
+		}
+
 	}
 
 	public boolean insert(String time, String latitude, String longitude, String elevation) {
 
-		GPSPoint gpspoint;
+		// Omgjør tekst til tall
+		GPSDataConverter.convert(time, latitude, longitude, elevation);
 
-		throw new UnsupportedOperationException(TODO.method());
+		// Opprrette gpspoint objekt
 
-		// TODO 
-		
+		GPSData gpspoint = new GPSData(antall);
+
+		// bruk insert metode for å putte objektet i tabellen.
+
+		insertGPS(gpspoint); //metodekallet virker ikke...
+		return true;
+
 	}
 
 	public void print() {
 
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO 
+		/*
+		 * public void print() som skriver ut GPS data som finnes i gpspoints-tabellen
+		 * på følgende formen
+		 * 
+		 * ====== GPS Data - START ====== 1 (1.0,2.0) 3.0 2 (4.0,5.0) 6.0 3 (7.0,8.0)
+		 * 9.0 ====== GPS Data - SLUTT ====== Hint: bruk løkke og toString-metoden på
+		 * GPSPoint-objekt.
+		 * 
+		 * Metodene som allerede er implementert i klassen GPSDataFileReader.java leser
+		 * - linje for linje - i GPS datafilen og lagrer data i tabellen ved å bruke
+		 * insert-metoden som ble implementert ovenfor.
+		 * 
+		 * Dette betyr at punktene i gpspoint-tabellen svarer til ruten som er
+		 * representert i GPS datafilen og gpspoint-referansetabellen vil ha samme
+		 * lengde som antallet av GPS punkter som er leste inn. Det siste betyr videre
+		 * at hvert element i gpspoint-tabellen vil peke på et objekt. dvs. tabellen er
+		 * full.
+		 * 
+		 */
+		
+		System.out.println("====== GPS Data - START ======");
+		
+		for(int i = 0; i < GPSPoint[].length; i++) { //får ikke lov til å bruke tabell lengden?
+			GPSPoint.toString(GPSPoint[i]);
+			System.out.println();
+		}
+		
+		System.out.println("====== GPS Data - SLUTT ======");
 	}
 }
