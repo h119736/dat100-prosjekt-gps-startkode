@@ -75,9 +75,8 @@ public class GPSData {
 		
 		System.out.println("====== GPS Data - START ======");
 		
-		for(int i = 0; i < GPSPoint[].length; i++) { //får ikke lov til å bruke tabell lengden?
-			GPSPoint.toString(GPSPoint[i]);
-			System.out.println();
+		for(int i = 0; i < antall; i++) { 
+			System.out.println(gpspoints[i].toString());
 		}
 		
 		System.out.println("====== GPS Data - SLUTT ======");
