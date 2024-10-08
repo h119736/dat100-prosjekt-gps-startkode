@@ -40,16 +40,14 @@ public class GPSData {
 	public boolean insert(String time, String latitude, String longitude, String elevation) {
 
 		// Omgjør tekst til tall
-		GPSDataConverter.convert(time, latitude, longitude, elevation);
+		GPSPoint gpspoint = GPSDataConverter.convert(time, latitude, longitude, elevation);
 
-		// Opprrette gpspoint objekt
-
-		GPSData gpspoint = new GPSData(antall);
+		
 
 		// bruk insert metode for å putte objektet i tabellen.
 
-		insertGPS(gpspoint); //metodekallet virker ikke...
-		return true;
+		return insertGPS(gpspoint); //metodekallet virker ikke...
+		
 
 	}
 
